@@ -1,0 +1,32 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Pixel 4 API 29",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "Pixel_4_API_29"
+        },
+        {
+            "name": "Pixel 4 API 30",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "Pixel_4_API_30"
+        },
+        {
+            "name": "chat_app (Flutter)",
+            "program": "lib/main.dart",
+            "request": "launch",
+            "type": "dart"
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Compound devices",
+            "configurations": [
+                "Pixel 4 API 29",
+                "Pixel 4 API 30"
+            ]
+        }
+    ]
+}
