@@ -41,11 +41,11 @@ android {
     kotlin {
         jvmToolchain(17)
     }
-    java {
-        toolchain {
-            languageVersion = JavaLanguageVersion.of(17)
-        }
-    }
+    // java {
+    //     toolchain {
+    //         languageVersion = JavaLanguageVersion.of(JavaVersion.VERSION_17)
+    //     }
+    // }
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -77,6 +77,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 
         }
+    }
+}
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
     }
 }
 

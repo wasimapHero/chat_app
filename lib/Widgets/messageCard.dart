@@ -10,8 +10,9 @@ import 'package:flutter/material.dart';
 
 import 'package:chat_app/Models/massage.dart';
 import 'package:flutter/services.dart';
-import 'package:gallery_saver_plus/gallery_saver.dart';
+import 'package:flutter_media_store/flutter_media_store.dart';
 import 'package:get/get.dart';
+
 
 
 class MessageCard extends StatefulWidget {
@@ -27,6 +28,8 @@ class MessageCard extends StatefulWidget {
 }
 
 class _MessageCardState extends State<MessageCard> {
+
+  final flutterMediaStore = FlutterMediaStore();
   @override
   Widget build(BuildContext context) {
 
@@ -227,13 +230,23 @@ class _MessageCardState extends State<MessageCard> {
                     onTap: () async{
                      try {
                         // image er path msg te ache 
-                    await GallerySaver.saveImage(widget.message.msg, albumName: 'Goppo-Shoppo').then((success) {
-                      Get.back(); // to hide bottom sheet 
-                      if (success != null && success) {
-                        Dialogs.showGetRawSnackbar('Image Saved!', mq);
-                      }
-                    });
-                     } catch (e) {
+                        ByteData byteData = await rootBundle.load(widget.message.msg);
+                        Uint8List fileData = byteData.buffer.asUint8List();
+
+                        final getFileExtension = widget.message.msg.split('.').last.toLowerCase();
+
+                        await flutterMediaStore.saveFile(fileData: fileData, fileName: 'Goppo-Shoppo', 
+                        mimeType: 'image/${getFileExtension}', rootFolderName: 'ZevaImages', folderName: 'Images/${getFileExtension}', 
+                        
+                        onSuccess: (String uri, String filePath) { 
+                          Get.snackbar("✅ File saved successfully: $filePath", "uri = ${uri.toString()}"); 
+                          Get.back(); // to hide bottom sheet
+                          }, 
+                        onError: (String errorMessage) {  });
+
+                        } 
+                     
+                     catch (e) {
                        print('ErrorWhileSavingImage: $e');
                      }
                     }),

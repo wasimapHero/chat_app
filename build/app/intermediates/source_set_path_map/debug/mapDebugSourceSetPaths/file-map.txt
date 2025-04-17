@@ -52,11 +52,12 @@ com.example.chat_app-debug-50 D:\zzz 2 class apps\chat_app\build\firebase_core\i
 com.example.chat_app-debug-51 D:\zzz 2 class apps\chat_app\build\firebase_messaging\intermediates\packaged_res\debug\packageDebugResources
 com.example.chat_app-debug-52 D:\zzz 2 class apps\chat_app\build\firebase_storage\intermediates\packaged_res\debug\packageDebugResources
 com.example.chat_app-debug-53 D:\zzz 2 class apps\chat_app\build\flutter_local_notifications\intermediates\packaged_res\debug\packageDebugResources
-com.example.chat_app-debug-54 D:\zzz 2 class apps\chat_app\build\flutter_plugin_android_lifecycle\intermediates\packaged_res\debug\packageDebugResources
-com.example.chat_app-debug-55 D:\zzz 2 class apps\chat_app\build\gallery_saver_plus\intermediates\packaged_res\debug\packageDebugResources
+com.example.chat_app-debug-54 D:\zzz 2 class apps\chat_app\build\flutter_media_store\intermediates\packaged_res\debug\packageDebugResources
+com.example.chat_app-debug-55 D:\zzz 2 class apps\chat_app\build\flutter_plugin_android_lifecycle\intermediates\packaged_res\debug\packageDebugResources
 com.example.chat_app-debug-56 D:\zzz 2 class apps\chat_app\build\google_sign_in_android\intermediates\packaged_res\debug\packageDebugResources
 com.example.chat_app-debug-57 D:\zzz 2 class apps\chat_app\build\image_picker_android\intermediates\packaged_res\debug\packageDebugResources
 com.example.chat_app-debug-58 D:\zzz 2 class apps\chat_app\build\path_provider_android\intermediates\packaged_res\debug\packageDebugResources
-com.example.chat_app-debug-59 D:\zzz 2 class apps\chat_app\build\share_plus\intermediates\packaged_res\debug\packageDebugResources
-com.example.chat_app-debug-60 D:\zzz 2 class apps\chat_app\build\shared_preferences_android\intermediates\packaged_res\debug\packageDebugResources
-com.example.chat_app-debug-61 D:\zzz 2 class apps\chat_app\build\sqflite\intermediates\packaged_res\debug\packageDebugResources
+com.example.chat_app-debug-59 D:\zzz 2 class apps\chat_app\build\permission_handler_android\intermediates\packaged_res\debug\packageDebugResources
+com.example.chat_app-debug-60 D:\zzz 2 class apps\chat_app\build\share_plus\intermediates\packaged_res\debug\packageDebugResources
+com.example.chat_app-debug-61 D:\zzz 2 class apps\chat_app\build\shared_preferences_android\intermediates\packaged_res\debug\packageDebugResources
+com.example.chat_app-debug-62 D:\zzz 2 class apps\chat_app\build\sqflite\intermediates\packaged_res\debug\packageDebugResources

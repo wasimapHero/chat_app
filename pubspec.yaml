@@ -85,7 +85,8 @@ dependencies:
   flutter_local_notifications: 
 
   # for storing images and videos in gallery
-  gallery_saver_plus: 
+  flutter_media_store: 
+  permission_handler:
 
   # google fonts
   google_fonts: 
