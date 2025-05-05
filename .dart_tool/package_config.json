@@ -614,18 +614,6 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "share_plus",
-      "rootUri": "file:///D:/flutter%20apps%20cache/PubCache/hosted/pub.dev/share_plus-7.2.2",
-      "packageUri": "lib/",
-      "languageVersion": "2.18"
-    },
-    {
-      "name": "share_plus_platform_interface",
-      "rootUri": "file:///D:/flutter%20apps%20cache/PubCache/hosted/pub.dev/share_plus_platform_interface-3.4.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.18"
-    },
-    {
       "name": "shared_preferences",
       "rootUri": "file:///D:/flutter%20apps%20cache/PubCache/hosted/pub.dev/shared_preferences-2.2.3",
       "packageUri": "lib/",
@@ -746,30 +734,6 @@
       "languageVersion": "2.17"
     },
     {
-      "name": "url_launcher_linux",
-      "rootUri": "file:///D:/flutter%20apps%20cache/PubCache/hosted/pub.dev/url_launcher_linux-3.2.1",
-      "packageUri": "lib/",
-      "languageVersion": "3.3"
-    },
-    {
-      "name": "url_launcher_platform_interface",
-      "rootUri": "file:///D:/flutter%20apps%20cache/PubCache/hosted/pub.dev/url_launcher_platform_interface-2.3.2",
-      "packageUri": "lib/",
-      "languageVersion": "3.1"
-    },
-    {
-      "name": "url_launcher_web",
-      "rootUri": "file:///D:/flutter%20apps%20cache/PubCache/hosted/pub.dev/url_launcher_web-2.4.0",
-      "packageUri": "lib/",
-      "languageVersion": "3.6"
-    },
-    {
-      "name": "url_launcher_windows",
-      "rootUri": "file:///D:/flutter%20apps%20cache/PubCache/hosted/pub.dev/url_launcher_windows-3.1.4",
-      "packageUri": "lib/",
-      "languageVersion": "3.4"
-    },
-    {
       "name": "uuid",
       "rootUri": "file:///D:/flutter%20apps%20cache/PubCache/hosted/pub.dev/uuid-4.5.1",
       "packageUri": "lib/",
@@ -824,7 +788,7 @@
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2025-04-17T12:47:00.878877Z",
+  "generated": "2025-05-05T18:09:07.427923Z",
   "generator": "pub",
   "generatorVersion": "3.6.1",
   "flutterRoot": "file:///E:/Softwares/flutter_windows_3.0.4-stable/flutter",

@@ -9,7 +9,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:share_plus/share_plus.dart';
+// import 'package:share_plus/share_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class MorePage extends StatefulWidget {
@@ -147,12 +147,12 @@ class _MorePageState extends State<MorePage> {
               ),
               onTap: () async {
                 // Handle invite tap
-                final result =
-                    await Share.shareWithResult('https://zeva.com');
+                // final result =
+                //     await Share.shareWithResult('https://zeva.com');
 
-                if (result.status == ShareResultStatus.success) {
-                  print('Thank you for sharing my website!');
-                }
+                // if (result.status == ShareResultStatus.success) {
+                //   print('Thank you for sharing my website!');
+                // }
               },
             ),
             const Divider(),
@@ -166,14 +166,8 @@ class _MorePageState extends State<MorePage> {
                   fontSize: 14,
                 ),
               ),
-              onTap: () {
+              onTap: () async {
                 // Handle invite tap
-                Get.dialog(AlertDialog(
-                  icon: Icon(Icons.logout),
-                  title: Text('Are you sure to logout?'),
-                  actions: [
-                    MaterialButton(
-                      onPressed: () async {
                         await APIs.updateActiveStatus(false);
                         await APIs.auth.signOut().then((value) async {
                           await GoogleSignIn().signOut().then((value) {
@@ -187,23 +181,7 @@ class _MorePageState extends State<MorePage> {
                            Get.off(Splash2());
                           });
                         });
-                      },
-                      child: Text(
-                        'Yes',
-                        style: TextStyle(
-                            color: const Color.fromARGB(255, 104, 63, 181)),
-                      ),
-                    ),
-                    MaterialButton(
-                      onPressed: () => Get.back(),
-                      child: Text(
-                        'No',
-                        style: TextStyle(
-                            color: const Color.fromARGB(255, 63, 181, 98)),
-                      ),
-                    ),
-                  ],
-                ));
+                      
               },
             ),
           ],

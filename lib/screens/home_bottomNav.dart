@@ -42,7 +42,7 @@ class _HomeBottomNavState extends State<HomeBottomNav> {
   
   Container buildMyNavBar() {
     return Container(
-      margin: EdgeInsets.only(bottom: mq.height*0.05),
+      // margin: EdgeInsets.only(bottom: mq.height*0.01),
       height: 60,
       decoration: BoxDecoration(
         color: Theme.of(context).primaryColor,
