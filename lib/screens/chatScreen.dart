@@ -12,7 +12,7 @@ import 'package:chat_app/screens/Dialogs/zegocloudVideo.dart';
 import 'package:chat_app/screens/view_profile_User_Info.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
+// import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +30,7 @@ import 'package:image_picker/image_picker.dart';
 
 class ChatScreen extends StatefulWidget {
   //
-  final Chat_cartUserModel user;
+  final Chat_cartUserModel user; // user is peer id
   ChatScreen({
     Key? key,
     required this.user,
@@ -46,15 +46,15 @@ class _ChatScreenState extends State<ChatScreen> {
   // call message class ad create list of msg
 
 
-  late List<Message_> _msgList = [];
+   late List<Message_> _msgList = [];
 
 
   TextEditingController _sent_textController = TextEditingController();
   ScrollController _scrollController = ScrollController();
 
-  bool _showEmoji = false;
+  var _showEmoji = false.obs;
   // to check if images are uploading or not
-  bool _isUploading = false;
+  var _isUploading = false.obs;
 
 
 
@@ -74,10 +74,11 @@ class _ChatScreenState extends State<ChatScreen> {
         canPop: false,
     
         onPopInvoked: (_) {
-          if (_showEmoji) {
-            setState(() {
-              _showEmoji = !_showEmoji;
-            });
+          if (_showEmoji.value) {
+            // setState(() {
+            //   _showEmoji = !_showEmoji;
+            // });
+            _showEmoji.value = !_showEmoji.value;
             return;
           }
     
@@ -109,7 +110,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 Expanded(
                     child: StreamBuilder(
                   // ekhane widget.user holo: peer user
-                  stream: APIs.getAllMessages(widget.user),
+                  stream: APIs.getAllMessages(widget.user), // user is peer id
                   builder: (BuildContext context,
                       AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>>
                           snapshot) {
@@ -134,17 +135,20 @@ class _ChatScreenState extends State<ChatScreen> {
                         
 
             
-                        final data = snapshot.data!.docs;
+                        if(snapshot.hasData) {
+                          final data = snapshot.data!.docs;
                         _msgList = data
-                                .map((e) => Message_.fromJson(e.data()))
-                                .toList() ??
-                            [];
+                                .map((e) => Message_.fromJson(e.data())).toList() ?? [];
+                                print("_msglist length: \n ${_msgList.length} \n");
+                        } 
+                        
             
 
                         if (_msgList.isNotEmpty) {
                           return ListView.builder(
                             // to show the last item always
                               reverse: true,
+                              shrinkWrap: true,
                               itemCount: _msgList.length,
                               // controller: _scrollController,
                               itemBuilder: (context, index) {
@@ -165,16 +169,17 @@ class _ChatScreenState extends State<ChatScreen> {
 
             
                   // circular progress bar between input bar & messages
-                  if(_isUploading)
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+                  if(_isUploading.value)
+                  Obx(() => Align(
+                      alignment: Alignment.centerRight,
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: CircularProgressIndicator(
-                          strokeWidth: 2,
-                          color: Color(0xFFD7D7D7),
+                        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2,
+                            color: Color(0xFFD7D7D7),
+                          ),
                         ),
                       ),
                     ),
@@ -183,18 +188,19 @@ class _ChatScreenState extends State<ChatScreen> {
             
 
                 _chatInput(),
-                if (_showEmoji)
-                  SizedBox(
-                      height: mq.height * 0.35,
-                      child: EmojiPicker(
-                        textEditingController: _sent_textController,
-                        config: Config(
-                            emojiViewConfig: EmojiViewConfig(
-                          backgroundColor: Colors.transparent,
-                          emojiSizeMax: 32 * (Platform.isIOS ? 1.30 : 1.0),
-                          columns: 8,
-                        )),
-                      ))
+                if (_showEmoji.value)
+                Obx(() => Container())
+                  // SizedBox(
+                  //     height: mq.height * 0.35,
+                  //     child: EmojiPicker(
+                  //       textEditingController: _sent_textController,
+                  //       config: Config(
+                  //           emojiViewConfig: EmojiViewConfig(
+                  //         backgroundColor: Colors.transparent,
+                  //         emojiSizeMax: 32 * (Platform.isIOS ? 1.30 : 1.0),
+                  //         columns: 8,
+                  //       )),
+                  //     ))
               ],
             ),
           ),
@@ -273,9 +279,10 @@ class _ChatScreenState extends State<ChatScreen> {
                   IconButton(
                       onPressed: () {
                         FocusScope.of(context).unfocus();
-                        setState(() {
-                          _showEmoji = !_showEmoji;
-                        });
+                        // setState(() {
+                        //   _showEmoji = !_showEmoji;
+                        // });
+                        _showEmoji.value = !_showEmoji.value;
                       },
                       icon: Icon(
                         Icons.emoji_emotions_outlined,
@@ -309,9 +316,10 @@ class _ChatScreenState extends State<ChatScreen> {
                         },
                         //
                         onTap: () {
-                          setState(() {
-                            if (_showEmoji) _showEmoji = !_showEmoji;
-                          });
+                          // setState(() {
+                            
+                          // });
+                          if (_showEmoji.value) _showEmoji.value = !_showEmoji.value;
                         },
                         controller: _sent_textController,
                         keyboardType: TextInputType.multiline,
@@ -344,11 +352,13 @@ class _ChatScreenState extends State<ChatScreen> {
 
                             APIs.sendChatImage(widget.user, File(i.path));
 
-                            setState(() =>_isUploading = true);
+                            // setState(() =>_isUploading = true);
+                            _isUploading.value = true;
 
                             APIs.sendChatImage(widget.user, File(i.path));
 
-                            setState(() =>_isUploading = false);
+                            _isUploading.value = true;
+                            // setState(() =>_isUploading = false);
 
                           }
                         }
@@ -373,11 +383,13 @@ class _ChatScreenState extends State<ChatScreen> {
 
                           APIs.sendChatImage(widget.user, File(image.path));
 
-                          setState(() =>_isUploading = true);
+                          // setState(() =>_isUploading = true);
+                          _isUploading.value = true;
 
                           APIs.sendChatImage(widget.user, File(image.path));
 
-                          setState(() =>_isUploading = false);
+                          // setState(() =>_isUploading = false);
+                          _isUploading.value = false;
 
                         }
                       },

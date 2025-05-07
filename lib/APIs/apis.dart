@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:chat_app/Models/chat_cartUserModel.dart';
 import 'package:chat_app/Models/massage.dart';
 import 'package:chat_app/Widgets/chatCard_User.dart';
+import 'package:chat_app/screens/home2.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -16,7 +17,6 @@ import 'dart:io';
 import 'package:app_settings/app_settings.dart';
 import 'package:chat_app/Models/chat_cartUserModel.dart';
 import 'package:chat_app/Models/massage.dart';
-import 'package:chat_app/screens/homeScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -193,7 +193,7 @@ class APIs {
 
   static Future<void> handleMessageToGoHomeScreen(
       BuildContext context, RemoteMessage message) async {
-    Get.to(HomeScreen());
+    Get.to(Home2());
   }
 
   //-----------method 2

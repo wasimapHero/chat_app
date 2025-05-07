@@ -5,7 +5,6 @@ import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:chat_app/APIs/apis.dart';
 import 'package:chat_app/Widgets/chatCard_User.dart';
-import 'package:chat_app/screens/Auth/login_screen.dart';
 import 'package:chat_app/screens/Dialogs/dialogs.dart';
 import 'package:chat_app/screens/Dialogs/my_date_util.dart';
 import 'package:firebase_auth/firebase_auth.dart';

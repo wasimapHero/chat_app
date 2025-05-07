@@ -1,13 +1,11 @@
 import 'package:chat_app/main.dart';
 import 'package:chat_app/screens/Auth/login2.dart';
 import 'package:chat_app/screens/home2.dart';
-import 'package:chat_app/screens/homeScreen.dart';
 import 'package:chat_app/screens/home_bottomNav.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:chat_app/screens/Auth/login_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 

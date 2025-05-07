@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:chat_app/APIs/apis.dart';
 import 'package:chat_app/main.dart';
 import 'package:chat_app/screens/Dialogs/dialogs.dart';
-import 'package:chat_app/screens/homeScreen.dart';
 import 'package:chat_app/screens/home_bottomNav.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';

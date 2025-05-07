@@ -17,7 +17,7 @@ class HomeBottomNav extends StatefulWidget {
 }
 
 class _HomeBottomNavState extends State<HomeBottomNav> {
-  int pageIndex = 1;
+  var pageIndex = 1.obs;
 
 
 
@@ -33,7 +33,7 @@ class _HomeBottomNavState extends State<HomeBottomNav> {
   Widget build(BuildContext context) {
       mq = MediaQuery.of(context).size;
     return Scaffold(
-      body: pages[pageIndex],
+      body: Obx(() => pages[pageIndex.value]),
       bottomNavigationBar: buildMyNavBar()
       
     );
@@ -42,7 +42,7 @@ class _HomeBottomNavState extends State<HomeBottomNav> {
   
   Container buildMyNavBar() {
     return Container(
-      // margin: EdgeInsets.only(bottom: mq.height*0.01),
+      margin: EdgeInsets.only(bottom: mq.height*0.01),
       height: 60,
       decoration: BoxDecoration(
         color: Theme.of(context).primaryColor,
@@ -57,12 +57,13 @@ class _HomeBottomNavState extends State<HomeBottomNav> {
           IconButton(
             enableFeedback: false,
             onPressed: () {
-              setState(() {
-                pageIndex = 0;
-              });
+              // setState(() {
+              //   pageIndex = 0;
+              // });
+              pageIndex.value = 0;
               
             },
-            icon: pageIndex == 0
+            icon: pageIndex.value == 0
                 ? const Icon(
                     Icons.person,
                     color: Colors.white,
@@ -77,11 +78,12 @@ class _HomeBottomNavState extends State<HomeBottomNav> {
           IconButton(
             enableFeedback: false,
             onPressed: () {
-              setState(() {
-                pageIndex = 1;
-              });
+              // setState(() {
+              //   pageIndex.value = 1;
+              // });
+              pageIndex.value = 1;
             },
-            icon: pageIndex == 1
+            icon: pageIndex.value == 1
                 ? const Icon(
                     Icons.home_filled,
                     color: Colors.white,
@@ -96,11 +98,13 @@ class _HomeBottomNavState extends State<HomeBottomNav> {
           IconButton(
             enableFeedback: false,
             onPressed: () {
-              setState(() {
-                pageIndex = 2;
-              });
+              // setState(() {
+              //   pageIndex = 2;
+              // });
+              pageIndex.value = 2;
             },
-            icon: pageIndex == 2
+            
+            icon: pageIndex.value == 2
                 ? const Icon(
                     Icons.widgets_rounded,
                     color: Colors.white,

@@ -5,7 +5,7 @@ import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:chat_app/APIs/apis.dart';
 import 'package:chat_app/Widgets/chatCard_User.dart';
-import 'package:chat_app/screens/Auth/login_screen.dart';
+import 'package:chat_app/screens/Auth/login2.dart';
 import 'package:chat_app/screens/Dialogs/dialogs.dart';
 
 
@@ -169,7 +169,7 @@ class _ChatCardUserState extends State<ProfileOfUser> {
       
                 // to move to previous page which is home screen
                 Navigator.pop(context);
-              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => LoginScreen()));
+              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => LoginScreen2()));
               } 
               
               

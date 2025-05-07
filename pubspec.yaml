@@ -38,7 +38,7 @@ dependencies:
   cupertino_icons: ^1.0.2
 
   # to connect firebase
-  firebase_core: 
+  firebase_core: ^3.13.0
 
   # to login firebase
   firebase_auth: 
@@ -65,7 +65,7 @@ dependencies:
   firebase_storage: 
 
   # emoji picker
-  emoji_picker_flutter:
+  # emoji_picker_flutter:
 
 
 

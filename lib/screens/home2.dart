@@ -22,7 +22,7 @@ class _Home2State extends State<Home2> {
   // ar eta model use korar somoy:
   List<Chat_cartUserModel> list = [];
   List<Chat_cartUserModel> _searchLettersList = []; // search list dorkar ekadhik result (similar) dekhanor jonno
-  bool _isSearching = false;
+  var _isSearching = false.obs;
 
     @override
   void initState() {
@@ -64,10 +64,11 @@ class _Home2State extends State<Home2> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: WillPopScope(
         onWillPop: () {
-          if (_isSearching) {
-            setState(() {
-              _isSearching = !_isSearching;
-            });
+          if (_isSearching.value) {
+            // setState(() {
+            //   _isSearching = !_isSearching;
+            // });
+            _isSearching.value = !_isSearching.value;
            return Future.value(false);
           } else {
            return Future.value(true);
@@ -81,7 +82,7 @@ class _Home2State extends State<Home2> {
             leading: IconButton(onPressed: ()  {
 
             }, icon: Icon(CupertinoIcons.home)),
-            title: _isSearching ? TextField(
+            title: _isSearching.value ? Obx(() => TextField(
               decoration: InputDecoration(
                 border: InputBorder.none,
                 hintText: "Name, email..",
@@ -93,7 +94,8 @@ class _Home2State extends State<Home2> {
                 // age add kora thakle segula baad dite
                 _searchLettersList.clear();
         
-                for (var i in list) {
+                if(list.isNotEmpty) {
+                  for (var i in list) {
                   if (i.name!.toLowerCase().contains(value.toLowerCase()) || i.email!.toLowerCase().contains(value.toLowerCase())) {
                      _searchLettersList.add(i); // mil hyoa doc gula add hobe search list e
                      
@@ -103,9 +105,10 @@ class _Home2State extends State<Home2> {
                       _searchLettersList;
                   });
                 }
+                }
         
               },
-            ) : Text("Zeva Chat"),
+            )) : Text("Zeva Chat"),
             actions: [
               
               
@@ -159,10 +162,11 @@ class _Home2State extends State<Home2> {
             ),
           ),
           IconButton(onPressed: () {
-                setState(() {
-                  _isSearching = !_isSearching;
-                });
-              }, icon: _isSearching ? Icon(Icons.clear_outlined) : Icon(Icons.search)),
+                // setState(() {
+                //   _isSearching = !_isSearching;
+                // });
+                _isSearching.value = !_isSearching.value;
+              }, icon: _isSearching.value ? Icon(Icons.clear_outlined) : Icon(Icons.search)),
         ],
       ),
     );
@@ -268,10 +272,10 @@ class _Home2State extends State<Home2> {
           
               if (list.isNotEmpty) {
                 return ListView.builder(
-                itemCount: _isSearching ? _searchLettersList.length : list.length,
+                itemCount: _isSearching.value ? _searchLettersList.length : list.length,
                 physics: BouncingScrollPhysics(),
                 itemBuilder:  (context, index) {
-                  return ChatCardUser(user: _isSearching ? _searchLettersList[index] : list[index],);
+                  return ChatCardUser(user: _isSearching.value ? _searchLettersList[index] : list[index],);
                   // return Text("Name: ${list[index]}"); // data asce kina dekhar jonno
             });
               } else {
